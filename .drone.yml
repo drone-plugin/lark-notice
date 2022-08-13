@@ -21,7 +21,7 @@ steps:
       - name: ssh_keys
         path: /root/.ssh
     environment:
-      warehouse_name: dekopon-design
+      warehouse_name: feishu-bot
 
     commands:
       - echo $DRONE_COMMIT_BRANCH
