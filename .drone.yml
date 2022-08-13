@@ -41,7 +41,7 @@ steps:
     commands:
       - pwd
       - ls -a
-      - make release
+      - GOOS=linux GOARCH=amd64 go build -o webhook
 
   - name: build dummy docker file and publish
     depends_on: [ build ]
