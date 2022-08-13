@@ -48,7 +48,8 @@ steps:
     image: plugins/docker
     pull: if-not-exists
     settings:
-      repo: registry.cn-shanghai.aliyuncs.com/zzf2001/foo-webhook
+      registry: registry.cn-shanghai.aliyuncs.com
+      repo: zzf2001/foo-webhook
       tags: registry.cn-shanghai.aliyuncs.com/zzf2001/foo-webhook
       debug: true
       username:
