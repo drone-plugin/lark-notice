@@ -49,6 +49,7 @@ steps:
     settings:
       repo: registry.cn-shanghai.aliyuncs.com/zzf2001/foo-webhook
       tags: latest
+      debug: true
       username:
         from_secret: docker_username
       password:
