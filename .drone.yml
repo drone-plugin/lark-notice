@@ -41,7 +41,7 @@ steps:
     commands:
       - pwd
       - ls -a
-      - docker login --username=docker_username --password=docker_password registry.cn-shanghai.aliyuncs.com
+      - docker login --username=$docker_username --password=$docker_password registry.cn-shanghai.aliyuncs.com
       - make docker
   - name: deploy
     image: appleboy/drone-scp
