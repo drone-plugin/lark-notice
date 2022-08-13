@@ -41,18 +41,19 @@ steps:
     commands:
       - pwd
       - ls -a
-      - docker login --username=$docker_username --password=$docker_password registry.cn-shanghai.aliyuncs.com
-      - make docker
-  - name: deploy
-    image: appleboy/drone-scp
-    depends_on: [build]
+      - make release
+
+  - name: build dummy docker file and publish
+    image: plugins/docker
+    pull: if-not-exists
     settings:
-      host:
-        from_secret: host
-      port: 22
+      repo: registry.cn-shanghai.aliyuncs.com/zzf2001/foo-webhook
+      tags: latest
       username:
-        from_secret: username
+        from_secret: docker_username
       password:
-        from_secret: password
-      target: /root
-      source: ./dist
+        from_secret: docker_password
+    commands:
+      - docker build -t foo/webhook . --tag registry.cn-shanghai.aliyuncs.com/zzf2001/foo-webhook
+      - docker push registry.cn-shanghai.aliyuncs.com/zzf2001/foo-webhook
+
