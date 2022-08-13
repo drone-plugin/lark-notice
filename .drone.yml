@@ -49,13 +49,10 @@ steps:
     pull: if-not-exists
     settings:
       repo: registry.cn-shanghai.aliyuncs.com/zzf2001/foo-webhook
-      tags: latest
+      tags: registry.cn-shanghai.aliyuncs.com/zzf2001/foo-webhook
       debug: true
       username:
         from_secret: docker_username
       password:
         from_secret: docker_password
-    commands:
-      - docker build -t foo/webhook . --tag registry.cn-shanghai.aliyuncs.com/zzf2001/foo-webhook
-      - docker push registry.cn-shanghai.aliyuncs.com/zzf2001/foo-webhook
 
