@@ -44,6 +44,7 @@ steps:
       - make release
 
   - name: build dummy docker file and publish
+    depends_on: [ build ]
     image: plugins/docker
     pull: if-not-exists
     settings:
