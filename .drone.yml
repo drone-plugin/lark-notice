@@ -50,7 +50,7 @@ steps:
     settings:
       registry: registry.cn-shanghai.aliyuncs.com
       repo: zzf2001/foo-webhook
-      tags: registry.cn-shanghai.aliyuncs.com/zzf2001/foo-webhook
+      tags: latest
       debug: true
       username:
         from_secret: docker_username
