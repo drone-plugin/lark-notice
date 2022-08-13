@@ -13,12 +13,8 @@ steps:
       text: hello
   - name: clone
     image: alpine/git
-    volumes:
-      - name: ssh_keys
-        path: /root/.ssh
     environment:
       warehouse_name: dekopon-design
-
     commands:
       - echo $DRONE_COMMIT_BRANCH
       - echo $DRONE_GIT_SSH_URL
