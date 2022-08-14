@@ -55,6 +55,4 @@ steps:
         from_secret: docker_password
       repo: registry.cn-shanghai.aliyuncs.com/zzf2001/foo-webhook
       tags: latest
-      debug: true
-
 
