@@ -5,7 +5,7 @@ import (
 	"crypto/sha256"
 	"encoding/base64"
 	"fmt"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"os"
 	"strconv"
@@ -24,9 +24,7 @@ type Content struct {
 }
 
 func sendMsg(apiUrl, msg string, secret string) {
-	// json
 	contentType := "application/json"
-	// data
 	currentTime := time.Now().Unix()
 	sign, _ := GenSign(secret, currentTime)
 	sendData := `{
@@ -41,7 +39,7 @@ func sendMsg(apiUrl, msg string, secret string) {
 	}
 	defer resp.Body.Close()
 	if resp.StatusCode == http.StatusCreated {
-		body, err := ioutil.ReadAll(resp.Body)
+		body, err := io.ReadAll(resp.Body)
 		if err != nil {
 			panic(err)
 		}
@@ -68,7 +66,17 @@ func GenSign(secret string, timestamp int64) (string, error) {
 func main() {
 	webhook := os.Getenv("PLUGIN_WEBHOOK")
 	secret := os.Getenv("PLUGIN_SECRET")
-	text := os.Getenv("DRONE_BUILD_LINK")
-	println(webhook, text, secret)
+	text := os.Getenv("PLUGIN_TEXT")
+	if webhook == "" {
+		fmt.Printf("请配置%s\n", "webhook")
+		os.Exit(1)
+	}
+	if secret == "" {
+		fmt.Printf("请配置%s\n", "secret")
+		os.Exit(1)
+	}
+	if text == "" {
+		text = os.Getenv("DRONE_BUILD_LINK")
+	}
 	sendMsg(webhook, text, secret)
 }
