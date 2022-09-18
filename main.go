@@ -86,7 +86,7 @@ func sendCard(apiUrl, secret string) {
             {
                 "tag":"div",
                 "text":{
-                    "content":"- [` + DroneRepo + `](` + DroneRepoLink + `)\n- [commit](` + DroneCommitLink + `)\n- [drone](` + DroneBuildLink + `)",
+                    "content":"⚒️ [` + DroneRepo + `](` + DroneRepoLink + `)\n⚒️ [commit](` + DroneCommitLink + `)\n⚒️ [drone](` + DroneBuildLink + `)",
                     "tag":"lark_md"
                 }
             }
