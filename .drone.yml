@@ -1,4 +1,6 @@
 kind: pipeline
+type: docker
+name: ci/cd
 volumes:
   - name: ssh_keys
     host:
@@ -14,7 +16,6 @@ steps:
         from_secret: webhook
       secret:
         from_secret: secret
-      text: hello
   - name: clone
     image: alpine/git
     volumes:
