@@ -69,6 +69,8 @@ func sendCard(apiUrl, secret string) {
 	sign, _ := GenSign(secret, currentTime)
 	DroneBuildLink := os.Getenv("DRONE_BUILD_LINK")
 	DroneCommitLink := os.Getenv("DRONE_COMMIT_LINK")
+	DroneRepoLink := os.Getenv("DRONE_REPO_LINK")
+	DroneRepo := os.Getenv("DRONE_REPO")
 	sendData := `{
 	"timestamp": ` + strconv.FormatInt(currentTime, 10) + `,
 	"sign": "` + sign + `",
@@ -84,7 +86,7 @@ func sendCard(apiUrl, secret string) {
             {
                 "tag":"div",
                 "text":{
-                    "content":"🔺 [commit](` + DroneCommitLink + `)\n🔺 [drone](` + DroneBuildLink + `)",
+                    "content":"- [` + DroneRepo + `](` + DroneRepoLink + `)\n- [commit](` + DroneCommitLink + `)\n- [drone](` + DroneBuildLink + `)",
                     "tag":"lark_md"
                 }
             }
