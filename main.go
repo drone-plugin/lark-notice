@@ -100,7 +100,6 @@ func sendCard(apiUrl, secret string) {
         }
     }
 }`
-	fmt.Println(sendData)
 	resp, err := http.Post(apiUrl, contentType, strings.NewReader(sendData))
 	if err != nil {
 		panic(err)
